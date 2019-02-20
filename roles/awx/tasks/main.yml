@@ -61,4 +61,4 @@
   import_tasks: services.yml
 
 - debug:
-    msg: "AWX has been installed, you can login on http://{{ inventory_hostname }}:8052 with the following credentials: admin:password"
+    msg: "AWX has been installed, you can login on http://{{ inventory_hostname }} with the following credentials: admin:password"
