@@ -1,0 +1,11 @@
+- yum:
+    name: ansible-awx
+    state: present
+  when: ansible_distribution == 'CentOS'
+
+- yum:
+    name: ansible-awx
+    state: present
+    enablerepo: centos-sclo-rh
+  when: ansible_distribution == 'RedHat'
+

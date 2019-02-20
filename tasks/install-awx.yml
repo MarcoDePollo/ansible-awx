@@ -1,0 +1,8 @@
+---
+- hosts: awx
+  remote_user: root
+
+  tasks:
+  - include_role:
+      name: awx
+  

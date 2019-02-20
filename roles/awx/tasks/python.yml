@@ -1,0 +1,11 @@
+- yum:
+    name:
+      - rh-python36
+      - libcurl-devel
+      - xmlsec1-openssl-devel
+      - xmlsec1-devel
+    state: present
+
+
+- shell: yum -y install --disablerepo='*' --enablerepo='mrmeee-ansible-awx, base' rh-python36*
+ 

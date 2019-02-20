@@ -1,0 +1,12 @@
+- yum:
+    name: policycoreutils-python
+    state: latest
+- seport:
+    ports: 8051-8052
+    proto: tcp
+    setype: http_port_t
+    state: present
+- seboolean:
+    name: httpd_can_network_connect
+    state: yes
+    persistent: yes

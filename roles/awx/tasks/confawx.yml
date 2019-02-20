@@ -1,0 +1,6 @@
+- template:
+    src: confawx.j2
+    dest: /tmp/confawx.sh
+    mode: 0755
+- shell: chown -R awx:awx /var/log/tower
+- shell: /tmp/confawx.sh

@@ -1,0 +1,7 @@
+- template:
+    src: rabbitmq.j2
+    dest: /etc/yum.repos.d/rabbitmq-erlang.repo
+- yum:
+    name: https://dl.bintray.com/rabbitmq/all/rabbitmq-server/3.7.5/rabbitmq-server-3.7.5-1.el7.noarch.rpm
+    state: present
+

@@ -1,0 +1,10 @@
+- service:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  with_items:
+  - awx-cbreceiver
+  - awx-dispatcher
+  - awx-channels-worker
+  - awx-daphne
+  - awx-web

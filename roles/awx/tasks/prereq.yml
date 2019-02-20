@@ -1,0 +1,15 @@
+- shell: scl enable rh-postgresql10 "postgresql-setup initdb"
+
+- service:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  with_items:
+    - rabbitmq-server
+    - rh-postgresql10-postgresql.service
+    - memcached
+
+- shell: scl enable rh-postgresql10 "su postgres -c \"createuser -S awx\""
+- shell: scl enable rh-postgresql10 "su postgres -c \"createdb -O awx awx\""
+
+

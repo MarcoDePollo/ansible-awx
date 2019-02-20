@@ -1,0 +1,29 @@
+- yum:
+    name: epel-release
+    state: present
+  when: ansible_distribution == 'CentOS'
+
+- yum:
+    name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    state: present
+  when: ansible_distribution == 'RedHat'
+
+- shell: subscription-manager repos --enable=rhel-server-rhscl-7-rpms
+  when: ansible_distribution == 'RedHat'
+
+- shell: subscription-manager repos --enable=rhel-7-server-optional-rpms
+  when: ansible_distribution == 'RedHat'
+
+- template:
+    src: centos.j2
+    dest: /etc/yum.repos.d/centos-scl-rh.repo
+
+- yum:
+    name: centos-release-scl
+    state: present
+  when: ansible_distribution == 'CentOS'
+
+- get_url:
+    url: https://copr.fedorainfracloud.org/coprs/mrmeee/ansible-awx/repo/epel-7/mrmeee-ansible-awx-epel-7.repo
+    dest: /etc/yum.repos.d/awx-rpm.repo
+

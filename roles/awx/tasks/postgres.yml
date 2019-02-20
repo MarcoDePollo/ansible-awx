@@ -1,0 +1,6 @@
+- yum:
+    name: 
+      - rh-postgresql10
+      - memcached
+    state: present
+

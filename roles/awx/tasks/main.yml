@@ -1,0 +1,64 @@
+---
+# tasks file for awx
+- debug:
+    msg: "Configure firewall"
+- name: Configure Firewall
+  import_tasks: firewall.yml
+
+- debug:
+    msg: "Configure SELinux"
+- name: Configure SELinux
+  import_tasks: selinux.yml
+
+- debug:
+    msg: "Configure Repos"
+- name: Configure repos
+  import_tasks: repos.yml
+
+- debug:
+    msg: "Configure RabbitMQ"
+
+- name: Configure RabbitMQ
+  import_tasks: rabbit.yml
+
+- debug:
+    msg: "Install PostgresQL/Memcached"
+- name: Install PostgreSQL and Memcached
+  import_tasks: postgres.yml
+
+- debug:
+    msg: "Install python dependencies"
+- name: Install Python dependencies
+  import_tasks: python.yml
+
+- debug:
+    msg: "Install AWX"
+- name: Install AWX
+  import_tasks: awx.yml
+
+- debug:
+    msg: "Configure prerequisite applications"
+
+- name: Configure prereqs
+  become_user: awx
+  import_tasks: prereq.yml
+
+- debug: 
+    msg: "Configure AWX"
+- name: Configure AWX
+  become_user: awx
+  import_tasks: confawx.yml
+
+- debug:
+    msg: "Install and configure Nginx"
+
+- name: Configure Nginx
+  import_tasks: nginx.yml
+
+- debug:
+    msg: "Starting services"
+- name: Start services
+  import_tasks: services.yml
+
+- debug:
+    msg: "AWX has been installed, you can login on http://{{ inventory_hostname }}:8052 with the following credentials: admin:password"
